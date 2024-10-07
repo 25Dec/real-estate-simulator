@@ -6,9 +6,9 @@ pipeline {
             steps {
                 sh'''
                     echo test.txt
-                    docker image build -t my_mysql ./database
-                    docker tag my_mysql:latest thien2002nhan/my_mysql:latest
-                    docker push thien2002nhan/my_mysql:latest
+                    sudo docker image build -t my_mysql ./database
+                    sudo docker tag my_mysql:latest thien2002nhan/my_mysql:latest
+                    sudo docker push thien2002nhan/my_mysql:latest
                 '''
             }
         }
