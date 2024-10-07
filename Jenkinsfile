@@ -18,7 +18,7 @@ pipeline {
         stage("Deploy to Server") {
             steps {
                 sh'''
-                    ansible-playbook -i ./ansible/hosts ./playbook.yml
+                    ansible-playbook -i ./ansible/hosts ./ansible/playbook.yml
                 '''
             }
         }
