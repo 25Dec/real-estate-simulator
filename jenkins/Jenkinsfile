@@ -3,17 +3,21 @@ pipeline {
 
     stages {
         stage("Build DB") {
-            sh'''
-                docker image build -t my_mysql ./database
-                docker tag my_mysql:latest thien2002nhan/my_mysql:latest
-                docker push thien2002nhan/my_mysql:latest
-            '''
+            steps {
+                sh'''
+                    docker image build -t my_mysql ./database
+                    docker tag my_mysql:latest thien2002nhan/my_mysql:latest
+                    docker push thien2002nhan/my_mysql:latest
+                '''
+            }
         }
 
         stage("Deploy to Server") {
-            sh'''
-                ansible-playbook -i ./ansible/hosts ./playbook.yml
-            '''
+            steps {
+                sh'''
+                    ansible-playbook -i ./ansible/hosts ./playbook.yml
+                '''
+            }
         }
     }
 }
