@@ -1,0 +1,14 @@
+- hosts: all
+  tasks:
+    - name: Pull Docker Image
+      docker_image:
+        name: 'thien2002nhan/my_mysql'
+        source: pull
+
+    - name: Run Docker Container
+      docker_container:
+        name: mycontainer
+        image: 'thien2002nhan/my_mysql'
+        state: started
+        ports:
+          - '80:80'
